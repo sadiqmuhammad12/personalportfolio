@@ -55,7 +55,7 @@ const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-gradient-to-b from-gray-900 to-gray-950 text-white">
       <div className="container-custom">
         {/* Main Footer Content */}
         <div className="py-16">
@@ -68,8 +68,8 @@ const Footer: React.FC = () => {
               viewport={{ once: true }}
               className="lg:col-span-1"
             >
-              <div className="flex items-center space-x-2 mb-6">
-                <div className="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center">
+            <div className="flex items-center space-x-2 mb-6">
+              <div className="w-10 h-10 bg-primary-600/90 backdrop-blur-xs rounded-lg flex items-center justify-center shadow-glass">
                   <span className="text-white font-bold text-xl">SM</span>
                 </div>
                 <span className="text-xl font-bold">Sadiq Muhammad</span>
@@ -87,7 +87,7 @@ const Footer: React.FC = () => {
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
-                    className={`p-2 bg-gray-800 rounded-lg transition-all duration-300 text-gray-400 ${social.color}`}
+                    className={`p-2 bg-white/5 hover:bg白/10 rounded-lg transition-all duration-300 text-gray-300 ${social.color}`}
                     aria-label={social.name}
                   >
                     {social.icon}
@@ -129,7 +129,7 @@ const Footer: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="border-t border-gray-800 py-8"
+          className="border-t border-white/10 py-8"
         >
           <div className="text-center">
             <h3 className="text-2xl font-bold mb-4">Stay Updated</h3>
@@ -141,7 +141,7 @@ const Footer: React.FC = () => {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-white placeholder-gray-400"
+                className="flex-1 px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-white placeholder-gray-400"
               />
               <button className="btn-primary whitespace-nowrap">
                 Subscribe
@@ -151,7 +151,7 @@ const Footer: React.FC = () => {
         </motion.div>
 
         {/* Bottom Footer */}
-        <div className="border-t border-gray-800 py-8">
+        <div className="border-t border-white/10 py-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <motion.div
               initial={{ opacity: 0 }}

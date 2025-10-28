@@ -121,6 +121,10 @@ const About: React.FC = () => {
               creating and maintaining comprehensive QA documentation, ensuring traceability and transparency throughout 
               the software development lifecycle.
             </p>
+            <div className="mt-8 glass rounded-2xl p-6">
+              <p className="text-gray-800"><span className="font-semibold">Personal Statement:</span> I’m passionate about delivering quality through intelligent automation, continuous improvement, and precise execution.</p>
+              <p className="text-primary-700 mt-3 italic">“Quality is not an act, it’s a habit.”</p>
+            </div>
           </motion.div>
 
           {/* Skills Grid */}
@@ -138,7 +142,7 @@ const About: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="card p-6"
+                className="card p-6 hover:shadow-glass"
               >
                 <div className="flex items-center mb-4">
                   <div className="p-2 bg-primary-100 rounded-lg mr-4">
@@ -159,6 +163,35 @@ const About: React.FC = () => {
           </motion.div>
         </div>
 
+        {/* Career Timeline */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="mb-20"
+        >
+          <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Career Timeline</h3>
+          <div className="relative">
+            <div className="absolute left-1/2 -translate-x-1/2 h-full w-0.5 bg-gradient-to-b from-primary-200 to-primary-500" />
+            <div className="space-y-10">
+              {[
+                { role: 'Senior QA Engineer', company: 'PMTAC', period: '2023 — Present' },
+                { role: 'SQA Engineer', company: 'Codistan', period: '2022 — 2023' },
+              ].map((step, idx) => (
+                <div key={idx} className={`grid md:grid-cols-2 gap-6 items-center ${idx % 2 ? 'md:text-left' : 'md:text-right'}`}>
+                  <div className={`hidden md:block ${idx % 2 ? 'order-2' : ''}`}></div>
+                  <div className={`card p-6 ${idx % 2 ? 'order-1 md:order-1' : ''}`}>
+                    <h4 className="text-lg font-semibold text-gray-900">{step.role}</h4>
+                    <p className="text-primary-600">{step.company}</p>
+                    <p className="text-gray-500 text-sm">{step.period}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
         {/* Certifications */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -175,9 +208,9 @@ const About: React.FC = () => {
               <h4 className="text-lg font-semibold text-gray-900 mb-4">Professional Certifications</h4>
               <ul className="space-y-3">
                 {certifications.map((cert, index) => (
-                  <li key={index} className="flex items-start">
+                  <li key={index} className="flex items-start group">
                     <CheckCircle className="w-5 h-5 text-primary-600 mr-3 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-600">{cert}</span>
+                    <span className="text-gray-600 group-hover:text-gray-900 transition-colors">{cert}</span>
                   </li>
                 ))}
               </ul>
@@ -185,12 +218,12 @@ const About: React.FC = () => {
             <div>
               <h4 className="text-lg font-semibold text-gray-900 mb-4">Education</h4>
               <div className="space-y-4">
-                <div className="border-l-4 border-primary-600 pl-4">
+                <div className="border-l-4 border-primary-600 pl-4 hover:shadow-soft rounded">
                   <h5 className="font-semibold text-gray-900">Master of Science (MS) in Project Management</h5>
                   <p className="text-gray-600">Air University, Islamabad, Pakistan (2025-2026)</p>
                   <p className="text-sm text-gray-500">In Progress</p>
                 </div>
-                <div className="border-l-4 border-primary-600 pl-4">
+                <div className="border-l-4 border-primary-600 pl-4 hover:shadow-soft rounded">
                   <h5 className="font-semibold text-gray-900">Bachelor of Science (BSc) in Computer Software Engineering</h5>
                   <p className="text-gray-600">University of Engineering & Technology (UET) Mardan (2018-2022)</p>
                 </div>

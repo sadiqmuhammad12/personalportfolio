@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -8,6 +9,7 @@ export default {
     extend: {
       fontFamily: {
         'sans': ['Inter', 'system-ui', 'sans-serif'],
+        'display': ['Poppins', 'Inter', 'system-ui', 'sans-serif'],
       },
       colors: {
         primary: {
@@ -49,8 +51,20 @@ export default {
           '0%': { transform: 'translateY(20px)', opacity: '0' },
           '100%': { transform: 'translateY(0)', opacity: '1' },
         }
+      },
+      boxShadow: {
+        'soft': '0 10px 30px -15px rgba(2, 132, 199, 0.25)',
+        'glass': '0 8px 32px rgba(2, 132, 199, 0.15)'
+      },
+      backdropBlur: {
+        xs: '2px'
       }
     },
+        navy: {
+          900: '#0b1220',
+          800: '#0f172a',
+          700: '#111827',
+        },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 }

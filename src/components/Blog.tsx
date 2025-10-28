@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
 import { BlogPost } from '../types';
+import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
+import rehypeHighlight from 'rehype-highlight';
 
 const Blog: React.FC = () => {
+  const [category, setCategory] = useState<string>('All');
+  const [activePost, setActivePost] = useState<BlogPost | null>(null);
   const blogPosts: BlogPost[] = [
     {
       id: 1,
@@ -86,6 +91,7 @@ const Blog: React.FC = () => {
   ];
 
   const categories: string[] = ['All', 'Testing', 'API Testing', 'Agile', 'Performance Testing', 'DevOps', 'Project Management'];
+  const filtered = useMemo(() => blogPosts.filter(p => category === 'All' || p.category === category), [category, blogPosts]);
 
   return (
     <section id="blog" className="section-padding bg-white">
@@ -113,12 +119,17 @@ const Blog: React.FC = () => {
           viewport={{ once: true }}
           className="flex flex-wrap justify-center gap-4 mb-12"
         >
-          {categories.map((category) => (
+          {categories.map((cat) => (
             <button
-              key={category}
-              className="px-6 py-3 rounded-full border-2 border-gray-200 text-gray-600 hover:border-primary-600 hover:text-primary-600 transition-all duration-300 font-medium"
+              key={cat}
+              onClick={() => setCategory(cat)}
+              className={`px-6 py-3 rounded-full border-2 transition-all duration-300 font-medium ${
+                category === cat
+                  ? 'bg-primary-600 text-white border-primary-600'
+                  : 'border-gray-200 text-gray-600 hover:border-primary-600 hover:text-primary-600'
+              }`}
             >
-              {category}
+              {cat}
             </button>
           ))}
         </motion.div>
@@ -184,7 +195,7 @@ const Blog: React.FC = () => {
 
         {/* Blog Posts Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogPosts.slice(1).map((post, index) => (
+          {filtered.slice(1).map((post, index) => (
             <motion.article
               key={post.id}
               initial={{ opacity: 0, y: 30 }}
@@ -192,11 +203,13 @@ const Blog: React.FC = () => {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
               className="card group cursor-pointer"
+              onClick={() => setActivePost(post)}
             >
               <div className="relative overflow-hidden rounded-t-xl">
                 <img
                   src={post.image}
                   alt={post.title}
+                  loading="lazy"
                   className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute top-4 left-4">
@@ -222,7 +235,7 @@ const Blog: React.FC = () => {
                   {post.title}
                 </h3>
                 
-                <p className="text-gray-600 mb-4 line-clamp-3">{post.excerpt}</p>
+                <p className="text-gray-600 mb-4 line-clamp-3 group-hover:line-clamp-none transition-[max-height] duration-300">{post.excerpt}</p>
                 
                 <div className="flex flex-wrap gap-2 mb-4">
                   {post.tags.slice(0, 2).map((tag) => (
@@ -264,6 +277,47 @@ const Blog: React.FC = () => {
             Load More Articles
           </button>
         </motion.div>
+        {/* Post Modal */}
+        {activePost && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50"
+            onClick={() => setActivePost(null)}
+          >
+            <motion.article
+              initial={{ scale: 0.98, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.98, opacity: 0 }}
+              className="bg-white dark:bg-gray-900 rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">{activePost.title}</h3>
+              <div className="flex items-center space-x-6 mb-6 text-sm text-gray-500">
+                <div className="flex items-center">
+                  <Calendar className="w-4 h-4 mr-2" />
+                  <span>{new Date(activePost.date).toLocaleDateString()}</span>
+                </div>
+                <div className="flex items-center">
+                  <Clock className="w-4 h-4 mr-2" />
+                  <span>{activePost.readTime}</span>
+                </div>
+              </div>
+              <div className="prose-custom">
+                <ReactMarkdown rehypePlugins={[rehypeRaw, rehypeHighlight]}>
+{`# ${activePost.title}
+
+${activePost.content}
+
+\n\n
+\n\n
+`}
+                </ReactMarkdown>
+              </div>
+            </motion.article>
+          </motion.div>
+        )}
       </div>
     </section>
   );

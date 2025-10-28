@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, Linkedin, Github, Twitter } from 'lucide-react';
+import { Mail, Phone, MapPin, SendHorizonal, Linkedin, Github, Twitter, Download } from 'lucide-react';
 import { ContactFormData, ContactInfo, SocialLink } from '../types';
 
 const Contact: React.FC = () => {
@@ -81,8 +81,10 @@ const Contact: React.FC = () => {
   ];
 
   return (
-    <section id="contact" className="section-padding bg-gray-50">
-      <div className="container-custom">
+    <section id="contact" className="section-padding relative overflow-hidden bg-gradient-to-br from-primary-50 via-white to-blue-50">
+      <div className="absolute -top-20 -right-20 w-96 h-96 rounded-full blur-3xl bg-primary-300/40" />
+      <div className="absolute -bottom-20 -left-20 w-[28rem] h-[28rem] rounded-full blur-3xl bg-blue-200/40" />
+      <div className="container-custom relative">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -179,7 +181,7 @@ const Contact: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="card p-8"
+            className="card p-8 glass"
           >
             <h3 className="text-2xl font-bold text-gray-900 mb-6">Send a Message</h3>
             
@@ -255,7 +257,7 @@ const Contact: React.FC = () => {
                 disabled={isSubmitting}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full btn-primary flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full btn-primary flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed ring-0 hover:ring-8 hover:ring-primary-500/20"
               >
                 {isSubmitting ? (
                   <>
@@ -265,7 +267,7 @@ const Contact: React.FC = () => {
                 ) : (
                   <>
                     Send Message
-                    <Send className="w-5 h-5 ml-2" />
+                    <SendHorizonal className="w-5 h-5 ml-2" />
                   </>
                 )}
               </motion.button>
@@ -280,6 +282,16 @@ const Contact: React.FC = () => {
                 </motion.div>
               )}
             </form>
+
+            <div className="mt-6">
+              <a
+                href="/Sadiq-Muhammad-CV.pdf"
+                download
+                className="inline-flex items-center btn-secondary"
+              >
+                <Download className="w-5 h-5 mr-2" /> Download CV
+              </a>
+            </div>
           </motion.div>
         </div>
       </div>

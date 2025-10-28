@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, Github, Eye } from 'lucide-react';
 import { Project } from '../types';
 
 const Portfolio: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [categoryFilter, setCategoryFilter] = useState<string>('All');
+  const [search, setSearch] = useState<string>('');
 
   const projects: Project[] = [
     {
@@ -360,6 +362,20 @@ const Portfolio: React.FC = () => {
     );
   };
 
+  const categories = useMemo(() => ['All', 'Web', 'API', 'Automation', 'Management'], []);
+  const filtered = useMemo(() => {
+    return projects.filter((p) => {
+      const categoryOk =
+        categoryFilter === 'All' ||
+        (categoryFilter === 'Web' && /web|dashboard|platform/i.test(p.category)) ||
+        (categoryFilter === 'API' && /api/i.test(p.description + p.longDescription)) ||
+        (categoryFilter === 'Automation' && /cypress|selenium|automation/i.test(p.technologies.join(' ') + p.description)) ||
+        (categoryFilter === 'Management' && /project|management|pm/i.test(p.description + p.category));
+      const text = (p.title + ' ' + p.description + ' ' + p.technologies.join(' ')).toLowerCase();
+      return categoryOk && text.includes(search.toLowerCase());
+    });
+  }, [projects, categoryFilter, search]);
+
   return (
     <section id="portfolio" className="section-padding bg-gray-50">
       <div className="container-custom">
@@ -378,14 +394,43 @@ const Portfolio: React.FC = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
+        {/* Filters */}
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
+          <div className="flex flex-wrap gap-2">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setCategoryFilter(cat)}
+                className={`px-4 py-2 rounded-full border transition-colors ${
+                  categoryFilter === cat
+                    ? 'bg-primary-600 text-white border-primary-600'
+                    : 'border-gray-200 text-gray-600 hover:border-primary-600 hover:text-primary-600'
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="Search projects..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="px-4 py-2 rounded-lg border border-gray-200 focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+            />
+          </div>
+        </div>
+
+        <motion.div layout className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filtered.map((project, index) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
+              layout
               className="card group cursor-pointer"
               onClick={() => setSelectedProject(project)}
             >
@@ -393,10 +438,14 @@ const Portfolio: React.FC = () => {
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                  className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                 />
-                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <Eye className="w-8 h-8 text-white" />
+                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6 text-center">
+                  <div>
+                    <h4 className="text-white text-lg font-semibold mb-2">{project.title}</h4>
+                    <p className="text-white/90 text-sm line-clamp-3">{project.description}</p>
+                  </div>
                 </div>
               </div>
               
@@ -453,7 +502,7 @@ const Portfolio: React.FC = () => {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Project Modal */}
         {selectedProject && (
