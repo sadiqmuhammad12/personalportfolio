@@ -1,6 +1,9 @@
 import React, { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Eye } from 'lucide-react';
+import { ExternalLink, 
+  Github
+  //  Eye
+   } from 'lucide-react';
 import { Project } from '../types';
 
 const Portfolio: React.FC = () => {

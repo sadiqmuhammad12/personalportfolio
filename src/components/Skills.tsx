@@ -56,8 +56,10 @@ const Skills: React.FC = () => {
             viewport={{ once: true }}
             className="space-y-4"
           >
-            {radar.map((item, idx) => (
-              <div key={item.name} className="card p-5">
+            {radar.map((item) => (
+              <div 
+              // key={item.name} 
+              className="card p-5">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-gray-800 dark:text-gray-100 font-semibold">{item.subject}</span>
                   <span className="text-primary-600 font-bold">{item.A}%</span>

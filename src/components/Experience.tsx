@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 
 type Exp = {
   company: string;
@@ -32,7 +32,7 @@ const experiences: Exp[] = [
 ];
 
 const Experience: React.FC = () => {
-  const [open, setOpen] = useState<number | null>(0);
+  // const [open, setOpen] = useState<number | null>(0);
 
   return (
     <section id="experience" className="section-padding bg-white dark:bg-gray-950">
