@@ -107,10 +107,10 @@ const About: React.FC = () => {
             
             <h3 className="text-2xl font-bold text-gray-900 mb-4">Sadiq Muhammad</h3>
             <p className="text-lg text-primary-600 font-semibold mb-6">
-              Senior QA Engineer | Automation Specialist | Project Manager
+            Sadiq Muhammad - Senior SQA Engineer | Automation Specialist | DevOps Enthusiast | Project Manager
             </p>
             <p className="text-gray-600 leading-relaxed mb-6">
-              Dynamic and results-driven Senior QA Engineer with over 3 years of experience in software quality assurance, 
+              Dynamic and results-driven Senior SQA Engineer with over 3 years of experience in software quality assurance, 
               automation testing, DevOps integration, and agile project management. Currently pursuing an MS in Project 
               Management, combining technical QA expertise with leadership and process optimization to drive quality 
               delivery and organizational success in global environments.

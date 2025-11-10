@@ -113,7 +113,7 @@ const Contact: React.FC = () => {
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Let's Connect</h3>
               <p className="text-gray-600 mb-8 leading-relaxed">
                 I'm always interested in new opportunities and exciting projects. Whether you're looking for 
-                a QA engineer, automation specialist, or project manager, I'd love to hear from you. 
+                a QA engineer, automation specialist, devops enthusiast, or project manager, I'd love to hear from you. 
                 Let's discuss how we can work together to deliver exceptional results.
               </p>
             </div>
@@ -285,7 +285,7 @@ const Contact: React.FC = () => {
 
             <div className="mt-6">
               <a
-                href="/Sadiq-Muhammad-CV.pdf"
+                href="/Sadiq-Muhammad-SQA-Engineer-Project-Manager.pdf"
                 download
                 className="inline-flex items-center btn-secondary"
               >

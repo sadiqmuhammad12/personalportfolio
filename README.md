@@ -1,6 +1,6 @@
 # Sadiq Muhammad - Portfolio Website
 
-A modern, responsive portfolio website built with React, Tailwind CSS, and Framer Motion. This website showcases my professional experience as a Senior QA Engineer, Automation Specialist, and Project Manager.
+A modern, responsive portfolio website built with React, Tailwind CSS, and Framer Motion. This website showcases my professional experience as a Senior SQA Engineer, Automation Specialist, DevOps Enthusiast, and Project Manager.
 
 ## 🚀 Features
 

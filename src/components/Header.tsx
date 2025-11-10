@@ -68,6 +68,7 @@ const Header: React.FC = () => {
     { name: 'What I Do', id: 'what-i-do' },
     { name: 'Portfolio', id: 'portfolio' },
     { name: 'Contact', id: 'contact' },
+    { name: 'Tech Stack', id: 'tech-stack' },
   ];
 
   return (
@@ -118,7 +119,7 @@ const Header: React.FC = () => {
 
           {/* Resume Link */}
           <a
-            href="/Sadiq-Muhammad-Resume.pdf"
+            href="/Sadiq-Muhammad-SQA-Engineer-Project-Manager.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="hidden md:inline-flex btn-secondary ml-3"

@@ -4,7 +4,7 @@ import { ChevronDown, Github, Linkedin, Mail, Cpu, Rocket, Terminal, Atom } from
 
 const Hero: React.FC = () => {
   // Typewriter for headline
-  const fullText = "Sadiq Muhammad — Senior QA Engineer | Automation Specialist | Project Manager";
+  const fullText = "Sadiq Muhammad - Senior SQA Engineer | Automation Specialist | DevOps Enthusiast | Project Manager";
   const [typed, setTyped] = React.useState<string>("");
   useEffect(() => {
     let i = 0;
@@ -119,7 +119,7 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.6 }}
             className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-8"
           >
-            Crafting quality through intelligent automation and precise execution
+            Crafting quality through intelligent automation, DevOps efficiency, and precise execution.
           </motion.div>
 
           {/* Tagline */}
@@ -129,7 +129,7 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.8 }}
             className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed"
           >
-            Dynamic and results-driven Senior QA Engineer with over 3 years of experience in software quality assurance, 
+            Dynamic and results-driven Senior SQA Engineer with over 3 years of experience in software quality assurance, 
             automation testing, DevOps integration, and agile project management. Passionate about delivering 
             scalable, reliable, and high-performing products.
           </motion.p>
