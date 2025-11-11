@@ -19,7 +19,17 @@ const Header: React.FC = () => {
 
   // Active section observer
   useEffect(() => {
-    const sectionIds = ['home', 'about', 'portfolio', 'blog', 'contact'];
+    const sectionIds = [
+      'home',
+      'about',
+      'what-i-do',
+      'certifications',
+      'tech-stack',
+      'career-timeline',
+      'portfolio',
+      'testimonials',
+      'contact'
+    ];
     const sections = sectionIds
       .map((id) => document.getElementById(id))
       .filter((el): el is HTMLElement => !!el);
@@ -66,9 +76,11 @@ const Header: React.FC = () => {
     { name: 'Home', id: 'home' },
     { name: 'About Me', id: 'about' },
     { name: 'What I Do', id: 'what-i-do' },
+    { name: 'Certifications & Education', id: 'certifications' },
+    { name: 'Tech Stack', id: 'tech-stack' },
+    { name: 'Career Timeline', id: 'career-timeline' },
     { name: 'Portfolio', id: 'portfolio' },
     { name: 'Contact', id: 'contact' },
-    { name: 'Tech Stack', id: 'tech-stack' },
   ];
 
   return (
@@ -88,12 +100,12 @@ const Header: React.FC = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`font-medium transition-colors duration-200 ${
+                className={`font-medium text-sm lg:text-base whitespace-nowrap transition-colors duration-200 ${
                   activeSection === item.id
                     ? 'text-primary-600'
                     : 'text-gray-700 dark:text-gray-300 hover:text-primary-600'
@@ -122,7 +134,7 @@ const Header: React.FC = () => {
             href="/Sadiq-Muhammad-SQA-Engineer-Project-Manager.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden md:inline-flex btn-secondary ml-3"
+            className="hidden md:inline-flex btn-secondary ml-4 whitespace-nowrap text-sm lg:text-base"
           >
             View My Resume
           </a>

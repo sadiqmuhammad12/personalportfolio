@@ -14,22 +14,20 @@ const Footer: React.FC = () => {
     'Quick Links': [
       { name: 'Home', href: '#home' },
       { name: 'About Me', href: '#about' },
+      { name: 'What I Do', href: '#what-i-do' },
+      { name: 'Certifications & Education', href: '#certifications' },
+      { name: 'Tech Stack', href: '#tech-stack' },
+      { name: 'Career Timeline', href: '#career-timeline' },
       { name: 'Portfolio', href: '#portfolio' },
-      { name: 'Blog', href: '#blog' },
       { name: 'Contact', href: '#contact' }
     ],
     'Services': [
-      { name: 'QA Testing', href: '#' },
-      { name: 'Automation Testing', href: '#' },
-      { name: 'API Testing', href: '#' },
-      { name: 'Performance Testing', href: '#' },
-      { name: 'Project Management', href: '#' }
-    ],
-    'Resources': [
-      { name: 'Privacy Policy', href: '#' },
-      { name: 'Terms of Service', href: '#' },
-      { name: 'Cookie Policy', href: '#' },
-      { name: 'Sitemap', href: '#' }
+      { name: 'Testing & QA', href: '#what-i-do' },
+      { name: 'Automation (Cypress, Selenium)', href: '#tech-stack' },
+      { name: 'API Testing (Postman, Swagger)', href: '#tech-stack' },
+      { name: 'Performance Testing (JMeter)', href: '#tech-stack' },
+      { name: 'DevOps & CI/CD (Azure DevOps, Actions)', href: '#tech-stack' },
+      { name: 'Project Management (Agile/Scrum)', href: '#what-i-do' }
     ]
   };
 
@@ -55,11 +53,15 @@ const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="bg-gradient-to-b from-gray-900 to-gray-950 text-white">
+    <footer className="relative overflow-hidden text-white bg-gradient-to-b from-gray-900 via-gray-950 to-black">
+      <div className="pointer-events-none absolute inset-0 opacity-[0.08]">
+        <div className="absolute -top-24 -right-24 w-[26rem] h-[26rem] rounded-full bg-primary-500 blur-[130px]" />
+        <div className="absolute -bottom-24 -left-24 w-[26rem] h-[26rem] rounded-full bg-sky-500 blur-[130px]" />
+      </div>
       <div className="container-custom">
         {/* Main Footer Content */}
         <div className="py-16">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
             {/* Brand Section */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -69,7 +71,7 @@ const Footer: React.FC = () => {
               className="lg:col-span-1"
             >
             <div className="flex items-center space-x-2 mb-6">
-              <div className="w-10 h-10 bg-primary-600/90 backdrop-blur-xs rounded-lg flex items-center justify-center shadow-glass">
+              <div className="w-10 h-10 bg-primary-600/90 rounded-lg flex items-center justify-center shadow-glass ring-1 ring-white/10">
                   <span className="text-white font-bold text-xl">SM</span>
                 </div>
                 <span className="text-xl font-bold">Sadiq Muhammad</span>
@@ -87,7 +89,7 @@ const Footer: React.FC = () => {
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
-                    className={`p-2 bg-white/5 hover:bg白/10 rounded-lg transition-all duration-300 text-gray-300 ${social.color}`}
+                    className={`p-2 bg-white/5 hover:bg-white/10 rounded-lg transition-all duration-300 text-gray-300 ring-1 ring-white/5 ${social.color}`}
                     aria-label={social.name}
                   >
                     {social.icon}
@@ -105,13 +107,13 @@ const Footer: React.FC = () => {
                 transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
                 viewport={{ once: true }}
               >
-                <h4 className="text-lg font-semibold mb-6">{category}</h4>
-                <ul className="space-y-3">
+                <h4 className="text-lg font-semibold mb-6 text-white/90">{category}</h4>
+                <ul className="space-y-2">
                   {links.map((link, linkIndex) => (
                     <li key={linkIndex}>
                       <a
                         href={link.href}
-                        className="text-gray-400 hover:text-white transition-colors duration-200"
+                        className="text-gray-400 hover:text-white transition-colors duration-200 px-2 py-1 rounded-md hover:bg-white/5 inline-flex"
                       >
                         {link.name}
                       </a>
@@ -123,32 +125,7 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Newsletter Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="border-t border-white/10 py-8"
-        >
-          <div className="text-center">
-            <h3 className="text-2xl font-bold mb-4">Stay Updated</h3>
-            <p className="text-gray-400 mb-6 max-w-2xl mx-auto">
-              Subscribe to my newsletter for the latest insights on QA testing, automation, 
-              and project management best practices.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-white placeholder-gray-400"
-              />
-              <button className="btn-primary whitespace-nowrap">
-                Subscribe
-              </button>
-            </div>
-          </div>
-        </motion.div>
+        {/* Newsletter Section removed by user request */}
 
         {/* Bottom Footer */}
         <div className="border-t border-white/10 py-8">
@@ -165,23 +142,7 @@ const Footer: React.FC = () => {
               <span>and passion for quality.</span>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="flex items-center space-x-6 text-sm text-gray-400"
-            >
-              <a href="#" className="hover:text-white transition-colors">
-                Privacy Policy
-              </a>
-              <a href="#" className="hover:text-white transition-colors">
-                Terms of Service
-              </a>
-              <a href="#" className="hover:text-white transition-colors">
-                Cookie Policy
-              </a>
-            </motion.div>
+            {/* Removed policy links by user request */}
           </div>
         </div>
       </div>

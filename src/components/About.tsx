@@ -55,16 +55,6 @@ const About: React.FC = () => {
     }
   ];
 
-  const certifications = [
-    'ISTQB Certified Tester - Foundation Level - Agile Extension',
-    'Foundations of Project Management',
-    'Agile Project Management',
-    'Project Initiation: Starting a Successful Project',
-    'Project Planning: Putting it All Together',
-    'Project Execution: Running the Project',
-    'Capstone: Applying Project Management in the Real World'
-  ];
-
   return (
     <section id="about" className="section-padding bg-white">
       <div className="container-custom">
@@ -162,75 +152,6 @@ const About: React.FC = () => {
             ))}
           </motion.div>
         </div>
-
-        {/* Career Timeline */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="mb-20"
-        >
-          <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Career Timeline</h3>
-          <div className="relative">
-            <div className="absolute left-1/2 -translate-x-1/2 h-full w-0.5 bg-gradient-to-b from-primary-200 to-primary-500" />
-            <div className="space-y-10">
-              {[
-                { role: 'Senior QA Engineer', company: 'PMTAC', period: '2023 — Present' },
-                { role: 'SQA Engineer', company: 'Codistan', period: '2022 — 2023' },
-              ].map((step, idx) => (
-                <div key={idx} className={`grid md:grid-cols-2 gap-6 items-center ${idx % 2 ? 'md:text-left' : 'md:text-right'}`}>
-                  <div className={`hidden md:block ${idx % 2 ? 'order-2' : ''}`}></div>
-                  <div className={`card p-6 ${idx % 2 ? 'order-1 md:order-1' : ''}`}>
-                    <h4 className="text-lg font-semibold text-gray-900">{step.role}</h4>
-                    <p className="text-primary-600">{step.company}</p>
-                    <p className="text-gray-500 text-sm">{step.period}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Certifications */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="bg-gray-50 rounded-2xl p-8"
-        >
-          <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-            Certifications & Education
-          </h3>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div>
-              <h4 className="text-lg font-semibold text-gray-900 mb-4">Professional Certifications</h4>
-              <ul className="space-y-3">
-                {certifications.map((cert, index) => (
-                  <li key={index} className="flex items-start group">
-                    <CheckCircle className="w-5 h-5 text-primary-600 mr-3 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-600 group-hover:text-gray-900 transition-colors">{cert}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-lg font-semibold text-gray-900 mb-4">Education</h4>
-              <div className="space-y-4">
-                <div className="border-l-4 border-primary-600 pl-4 hover:shadow-soft rounded">
-                  <h5 className="font-semibold text-gray-900">Master of Science (MS) in Project Management</h5>
-                  <p className="text-gray-600">Air University, Islamabad, Pakistan (2025-2026)</p>
-                  <p className="text-sm text-gray-500">In Progress</p>
-                </div>
-                <div className="border-l-4 border-primary-600 pl-4 hover:shadow-soft rounded">
-                  <h5 className="font-semibold text-gray-900">Bachelor of Science (BSc) in Computer Software Engineering</h5>
-                  <p className="text-gray-600">University of Engineering & Technology (UET) Mardan (2018-2022)</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
