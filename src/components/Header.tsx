@@ -86,7 +86,9 @@ const Header: React.FC = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white/70 dark:bg-gray-900/60 backdrop-blur-md shadow-glass' : 'bg-transparent'
+        isScrolled
+          ? 'bg-gradient-to-r from-white/90 to-white/75 dark:from-gray-900/90 dark:to-gray-800/80 backdrop-blur-xl shadow-lg border-b border-white/20 dark:border-white/10'
+          : 'bg-white/40 dark:bg-gray-900/40 backdrop-blur-md border-b border-transparent'
       }`}
     >
       <nav className="container-custom">

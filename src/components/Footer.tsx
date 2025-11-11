@@ -60,8 +60,8 @@ const Footer: React.FC = () => {
       </div>
       <div className="container-custom">
         {/* Main Footer Content */}
-        <div className="py-16">
-          <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+        <div className="py-10">
+          <div className="grid gap-10 md:grid-cols-5 lg:grid-cols-4">
             {/* Brand Section */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -108,18 +108,47 @@ const Footer: React.FC = () => {
                 viewport={{ once: true }}
               >
                 <h4 className="text-lg font-semibold mb-6 text-white/90">{category}</h4>
-                <ul className="space-y-2">
-                  {links.map((link, linkIndex) => (
-                    <li key={linkIndex}>
-                      <a
-                        href={link.href}
-                        className="text-gray-400 hover:text-white transition-colors duration-200 px-2 py-1 rounded-md hover:bg-white/5 inline-flex"
-                      >
-                        {link.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
+                {links.length > 4 ? (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6">
+                    <ul className="space-y-2">
+                      {links.slice(0, 4).map((link, linkIndex) => (
+                        <li key={`col1-${linkIndex}`}>
+                          <a
+                            href={link.href}
+                            className="text-gray-400 hover:text-white transition-colors duration-200 px-2 py-1 rounded-md hover:bg-white/5 inline-flex"
+                          >
+                            {link.name}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                    <ul className="space-y-2 mt-2 sm:mt-0">
+                      {links.slice(4).map((link, linkIndex) => (
+                        <li key={`col2-${linkIndex}`}>
+                          <a
+                            href={link.href}
+                            className="text-gray-400 hover:text-white transition-colors duration-200 px-2 py-1 rounded-md hover:bg-white/5 inline-flex"
+                          >
+                            {link.name}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : (
+                  <ul className="space-y-2">
+                    {links.map((link, linkIndex) => (
+                      <li key={linkIndex}>
+                        <a
+                          href={link.href}
+                          className="text-gray-400 hover:text-white transition-colors duration-200 px-2 py-1 rounded-md hover:bg-white/5 inline-flex"
+                        >
+                          {link.name}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </motion.div>
             ))}
           </div>
@@ -162,6 +191,7 @@ const Footer: React.FC = () => {
         <ArrowUp className="w-6 h-6" />
       </motion.button>
     </footer>
+    
   );
 };
 
